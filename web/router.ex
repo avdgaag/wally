@@ -22,5 +22,7 @@ defmodule Wally.Router do
     pipe_through :api
 
     get "/projects", ProjectsController, :index
+
+    post "/hooks/heroku", HerokuController, :index
   end
 end
