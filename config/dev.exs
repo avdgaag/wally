@@ -30,5 +30,5 @@ config :logger, :console, format: "[$level] $message\n"
 config :wally, Wally.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
+  password: "",
   database: "wally_dev"

@@ -13,7 +13,7 @@ config :logger, level: :warn
 config :wally, Wally.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
+  password: "",
   database: "wally_test",
   size: 1,
   max_overflow: false
