@@ -34,4 +34,5 @@ config :wally, Wally.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "",
-  database: "wally_dev"
+  database: "wally_dev",
+  extensions: [{Wally.Jsonb.Extension, library: Poison}]

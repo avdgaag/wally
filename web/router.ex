@@ -18,8 +18,9 @@ defmodule Wally.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", Wally do
-  #   pipe_through :api
-  # end
+  scope "/api", Wally do
+    pipe_through :api
+
+    get "/projects", ProjectsController, :index
+  end
 end

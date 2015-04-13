@@ -16,4 +16,5 @@ config :wally, Wally.Repo,
   password: "",
   database: "wally_test",
   size: 1,
-  max_overflow: false
+  max_overflow: false,
+  extensions: [{Wally.Jsonb.Extension, library: Poison}]
