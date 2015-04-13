@@ -1,10 +1,8 @@
-import {Socket} from "../vendor/phoenix"
+import React from 'react';
+import Wall from './components/wall';
+import ProjectStore from './store';
 
-// let socket = new Socket("/ws")
-// socket.join("topic:subtopic", {}, chan => {
-// })
-
-let App = {
-}
-
-export default App
+React.render(
+  React.createElement(Wall, { store: ProjectStore }),
+  document.getElementById('page')
+);
