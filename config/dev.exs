@@ -5,13 +5,16 @@ use Mix.Config
 #
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
-# with brunch.io to recompile .js and .css sources.
+# with Webpack to recompile .js and .css sources.
 config :wally, Wally.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
   cache_static_lookup: false,
-  watchers: [node: ["node_modules/brunch/bin/brunch", "watch"]]
+  watchers: [
+    {"npm", ["run", "compile:js:watch"]},
+    {"npm", ["run", "compile:css:watch"]}
+  ]
 
 # Watch static and templates for browser reloading.
 config :wally, Wally.Endpoint,
