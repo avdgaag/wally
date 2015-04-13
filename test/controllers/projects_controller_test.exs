@@ -7,6 +7,7 @@ defmodule Wally.ProjectsControllerTest do
     projects_as_json =
       %Project{title: "My first project"}
       |> Repo.insert
+      |> Repo.preload(:badges)
       |> List.wrap
       |> Poison.encode!
     response = get conn(), "/api/projects"

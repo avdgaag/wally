@@ -1,15 +1,15 @@
-defmodule Wally.Project do
+defmodule Wally.Badge do
   use Wally.Web, :model
 
-  schema "projects" do
-    field :title, :string
-    field :settings, Wally.Jsonb.Type
-    has_many :badges, Wally.Badge
+  schema "badges" do
+    field :label, :string
+    field :value, :string
+    belongs_to :project, Wally.Project
 
     timestamps
   end
 
-  @required_fields ~w(title settings)
+  @required_fields ~w(label value project_id)
   @optional_fields ~w()
 
   @doc """

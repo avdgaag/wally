@@ -6,7 +6,7 @@ defmodule Wally.ProjectsController do
   plug :action
 
   def index(conn, _params) do
-    projects = Repo.all(Project)
+    projects = Repo.all(Project) |> Repo.preload(:badges)
     json conn, projects
   end
 end
