@@ -1,12 +1,15 @@
 import React from "react";
 import Timestamp from "../timestamp";
 import UpdatingTimestamp from "./updating_timestamp";
+import Checkmark from "./checkmark";
 
 export default class Badge extends React.Component {
   renderValue() {
     let value = this.props.badge.value;
     if(Timestamp.matches(value)) {
       return <UpdatingTimestamp timestamp={value} />;
+    } else if(Checkmark.matches(value)) {
+      return <Checkmark status={value} />
     } else {
       return value;
     }
