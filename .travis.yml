@@ -2,6 +2,10 @@
 language: elixir
 otp_release:
   - 17.4
+install:
+  - mix local.hex --force
+  - mix deps.get
+  - npm install
 script:
   - mix test
   - npm test
