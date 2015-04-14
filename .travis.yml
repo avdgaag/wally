@@ -4,4 +4,4 @@ otp_release:
   - 17.4
 script:
   - mix test
-  - mocha
+  - npm test
