@@ -56,4 +56,27 @@ describe('Store', function() {
       done();
     });
   });
+
+  it("adds a new badge to a project", function(done) {
+    let projects = [{ id: 1, title: "First project", badges: [] }];
+    let promise = Store.fetchProjects();
+    requests[0].respond(200, {}, JSON.stringify(projects));
+    promise.then(function() {
+      Store.updateBadge({ id: 5, label: "CI", value: "Passing", project_id: 1 });
+      expect(Store.getProjects()[0].badges).to.have.length(1);
+      done();
+    });
+  });
+
+  it("updates an existing badge in a project", function(done) {
+    let projects = [{ id: 1, title: "First project", badges: [{ id: 5, label: "CI", value: "Failed" }] }];
+    let promise = Store.fetchProjects();
+    requests[0].respond(200, {}, JSON.stringify(projects));
+    promise.then(function() {
+      Store.updateBadge({ id: 5, label: "CI", value: "Passing", project_id: 1 });
+      let projects = Store.getProjects();
+      expect(projects[0].badges[0].value).to.eql("Passing");
+      done();
+    });
+  });
 });

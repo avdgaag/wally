@@ -40,6 +40,19 @@ let ProjectStore = {
     if(index !== -1) {
       observers.splice(index, 1);
     }
+  },
+
+  updateBadge(newBadge) {
+    let project = projects.find(p => p.id == newBadge.project_id);
+    if(project) {
+      let badge = project.badges.find(badge => badge.id == newBadge.id);
+      if(badge) {
+        extend(badge, newBadge);
+      } else {
+        project.badges.push(badge);
+      }
+      notifyObservers();
+    }
   }
 };
 

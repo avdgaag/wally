@@ -25,4 +25,8 @@ defmodule Wally.Router do
 
     post "/hooks/heroku", HerokuController, :index
   end
+
+  socket "/ws", Wally do
+    channel "notifications", NotificationsChannel
+  end
 end
