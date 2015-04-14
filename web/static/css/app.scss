@@ -45,11 +45,11 @@ body {
 .badge:last-child {
   margin-right: 0;
 }
-.badge__count {
+.badge__value {
   line-height: 36px;
   font-weight: bold;
 }
-.badge__title {
+.badge__label {
   line-height: 18px;
   font-size: 11px;
   text-transform: uppercase;
