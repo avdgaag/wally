@@ -7,7 +7,7 @@ defmodule Wally.Repo.Migrations.CreateBadge do
       add :value, :string, null: false
       add :project_id, references(:projects), null: false
 
-      timestamps
+      timestamps default: "now()"
     end
 
     create index(:badges, [:project_id])

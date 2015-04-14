@@ -6,7 +6,7 @@ defmodule Wally.Repo.Migrations.CreateProject do
       add :title, :string, null: false
       add :settings, :jsonb
 
-      timestamps
+      timestamps default: "now()"
     end
 
     create index(:projects, [:settings], using: :gin)
