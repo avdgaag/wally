@@ -6,6 +6,9 @@
 # Generate on crash by the VM
 erl_crash.dump
 
+# Generate on crash by NPM
+npm-debug*
+
 # Static artifacts
 /node_modules
 
