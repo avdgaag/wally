@@ -9,7 +9,9 @@ defmodule Wally.Mixfile do
      compilers: [:phoenix] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps]
+     deps: deps,
+     name: "Wally",
+     source_url: "https://github.com/avdgaag/wally"]
   end
 
   # Configuration for the OTP application
@@ -32,6 +34,7 @@ defmodule Wally.Mixfile do
      {:phoenix_ecto, "~> 0.3"},
      {:postgrex, ">= 0.0.0"},
      {:phoenix_live_reload, "~> 0.3"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:ex_doc, "~> 0.7", only: :dev}]
   end
 end

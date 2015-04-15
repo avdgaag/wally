@@ -1,7 +1,15 @@
 defmodule Wally.Jsonb do
+  @moduledoc """
+  Adds capabilities to Ecto models to deal with JSONB columns from a PostgreSQL
+  database.
+  """
 
   defmodule Type do
     @behaviour Ecto.Type
+
+    @moduledoc """
+    Implements JSONB as an Ecto type to be used in models and schema definitions.
+    """
 
     def type, do: :jsonb
 
@@ -12,6 +20,11 @@ defmodule Wally.Jsonb do
 
   defmodule Extension do
     alias Postgrex.TypeInfo
+
+    @moduledoc """
+    Adds support for JSONB columns to the postgrex driver, as per the official
+    postgrex README.
+    """
 
     @behaviour Postgrex.Extension
 

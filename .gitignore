@@ -18,3 +18,4 @@ npm-debug*
 /priv/static/css
 /priv/static/js
 .projections.json
+doc
