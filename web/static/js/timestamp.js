@@ -3,7 +3,7 @@ let matcher = /^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})$/;
 function parseDateString(str) {
   let matches = matcher.exec(str);
   if(!matches) throw Error("Not a valid datetime string: " + str);
-  return new Date(matches[1], matches[2] - 1, matches[3], matches[4], matches[5], matches[6]);
+  return new Date(Date.UTC(matches[1], matches[2] - 1, matches[3], matches[4], matches[5], matches[6]));
 }
 
 export default class Timestamp {
