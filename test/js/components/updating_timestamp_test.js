@@ -4,7 +4,7 @@ describe("UpdatingTimestamp", function() {
   let clock;
 
   beforeEach(function() {
-    clock = sinon.useFakeTimers(new Date(2015, 3, 15, 12, 0, 0).getTime());
+    clock = sinon.useFakeTimers(Date.UTC(2015, 3, 15, 12, 0, 0));
   });
 
   afterEach(function() {
