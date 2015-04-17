@@ -23,6 +23,7 @@ defmodule Wally.Router do
 
     get "/projects", ProjectsController, :index
 
+    post "/hooks/codeship", CodeshipController, :index
     post "/hooks/heroku", HerokuController, :index
   end
 
