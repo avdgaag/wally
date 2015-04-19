@@ -1,5 +1,7 @@
 # Wally
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 A toy software status wall application built with [Elixir][], [Phoenix][] and
 [React][]. Use it to display you CI build status and latest project activity on
 a big screen in the office.

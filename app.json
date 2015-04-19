@@ -1,0 +1,11 @@
+{
+  "addons": ["heroku-postgresql:hobby-dev"],
+  "env": {
+    "BUILDPACK_URL": "https://github.com/ddollar/heroku-buildpack-multi.git",
+    "MIX_ENV": "prod",
+    "SECRET_KEY_BASE": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    }
+  }
+}
