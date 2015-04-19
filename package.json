@@ -14,7 +14,8 @@
     "compile:js:watch": "webpack --config $npm_package_config_webpack_config --watch",
     "test": "mocha",
     "test:watch": "mocha --watch --reporter min",
-    "env": "env"
+    "env": "env",
+    "compile": "npm run compile:css; npm run compile:js"
   },
   "repository": {},
   "dependencies": {
