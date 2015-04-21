@@ -11,7 +11,8 @@ defmodule Wally.Mixfile do
      start_permanent: Mix.env == :prod,
      deps: deps,
      name: "Wally",
-     source_url: "https://github.com/avdgaag/wally"]
+     source_url: "https://github.com/avdgaag/wally",
+     aliases: aliases]
   end
 
   # Configuration for the OTP application
@@ -20,6 +21,10 @@ defmodule Wally.Mixfile do
   def application do
     [mod: {Wally, []},
      applications: [:phoenix, :cowboy, :logger, :ecto]]
+  end
+
+  defp aliases do
+    [compile: ["compile", &compile_assets/1]]
   end
 
   # Specifies which paths to compile per environment
@@ -36,5 +41,14 @@ defmodule Wally.Mixfile do
      {:phoenix_live_reload, "~> 0.3"},
      {:cowboy, "~> 1.0"},
      {:ex_doc, "~> 0.7", only: :dev}]
+  end
+
+  defp compile_assets(_args) do
+    case System.get_env("MIX_ENV") do
+      "prod" ->
+        System.cmd("npm", ["run", "compile"])
+      _ ->
+        IO.puts "Skipping asset compilation"
+    end
   end
 end
