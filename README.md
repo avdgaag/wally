@@ -1,7 +1,7 @@
 # Wally
 
 A toy software status wall application built with [Elixir][], [Phoenix][] and
-[React][]. Use it to display you CI build status and latest project activity on
+[React][]. Use it to display your CI build status and latest project activity on
 a big screen in the office.
 
 **Quite a work in progress**.
@@ -24,7 +24,7 @@ This application renders a list of projects and their status on the client side,
 while receiving web hooks from external services on the server side. Using
 websockets, the client is updated immediately.
 
-Currently the only implemented web hook is a Heroku depoyment notification.
+Currently the only implemented web hook is a Heroku deployment notification.
 
 ## Deploy to Heroku
 
@@ -43,7 +43,7 @@ Now you can actually prepare your database and start using the app:
 
     % heroku run mix ecto.migrate
 
-Of course, you could always change the app to use a `json` isntead of a `jsonb`
+Of course, you could always change the app to use a `json` instead of a `jsonb`
 column, which is less performant but easier to set up, as it requires only
 Postgres 9.3.
 
