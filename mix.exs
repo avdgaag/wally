@@ -35,10 +35,11 @@ defmodule Wally.Mixfile do
   #
   # Type `mix help deps` for examples and options
   defp deps do
-    [{:phoenix, "~> 0.11"},
-     {:phoenix_ecto, "~> 0.3"},
+    [{:phoenix, "~> 0.13"},
+     {:phoenix_ecto, "~> 0.4"},
+     {:phoenix_html, "~> 1.0"},
      {:postgrex, ">= 0.0.0"},
-     {:phoenix_live_reload, "~> 0.3"},
+     {:phoenix_live_reload, "~> 0.4"},
      {:cowboy, "~> 1.0"},
      {:ex_doc, "~> 0.7", only: :dev}]
   end
