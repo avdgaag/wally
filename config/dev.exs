@@ -35,4 +35,5 @@ config :wally, Wally.Repo,
   username: "postgres",
   password: "",
   database: "wally_dev",
+  size: 10, # The amount of database connections in the pool
   extensions: [{Wally.Jsonb.Extension, library: Poison}]

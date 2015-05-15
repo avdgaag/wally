@@ -15,6 +15,6 @@ config :wally, Wally.Repo,
   username: "postgres",
   password: "",
   database: "wally_test",
-  size: 1,
+  size: 1, # Use a single connection for transactional tests
   max_overflow: false,
   extensions: [{Wally.Jsonb.Extension, library: Poison}]

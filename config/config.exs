@@ -8,7 +8,7 @@ use Mix.Config
 # Configures the endpoint
 config :wally, Wally.Endpoint,
   url: [host: "localhost"],
-  root: Path.expand("..", __DIR__),
+  root: Path.dirname(__DIR__),
   secret_key_base: "iS4JiLaDCYQa54u06Gs07ahjRFmZwpDLrB5AjILICCV4HsmwBl4U2Wqw2dgRMTct",
   debug_errors: false,
   pubsub: [name: Wally.PubSub,

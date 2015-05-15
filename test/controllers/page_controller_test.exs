@@ -3,6 +3,6 @@ defmodule Wally.PageControllerTest do
 
   test "GET /" do
     conn = get conn(), "/"
-    assert conn.resp_body =~ "Wally"
+    assert html_response(conn, 200) =~ "Wally"
   end
 end
