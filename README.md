@@ -24,7 +24,20 @@ This application renders a list of projects and their status on the client side,
 while receiving web hooks from external services on the server side. Using
 websockets, the client is updated immediately.
 
-Currently the only implemented web hook is a Heroku deployment notification.
+Currently the only implemented web hooks are:
+
+* a Heroku deployment notification;
+* a Codeship build status notification.
+
+## Plugins and widgets
+
+The aim is to divide this project into three parts:
+
+* the infrastructure to manage projects and show the status wall;
+* plugins that can accept a range of incoming web hooks (a Phoenix controller
+  written in Elixir);
+* widgets to present data in the browser to the client (a React component
+  written in Javascript).
 
 ## Deploy to Heroku
 
