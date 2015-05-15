@@ -18,6 +18,13 @@ To start your new Phoenix application:
 
 Now you can visit `localhost:4000` from your browser.
 
+## Testing
+
+You can run this project's tests in two parts:
+
+* Test Elixir back-end code with `mix test`.
+* Test Javascript front-end code with `npm test`.
+
 ## Overview
 
 This application renders a list of projects and their status on the client side,
