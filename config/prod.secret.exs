@@ -10,4 +10,5 @@ config :wally, Wally.Endpoint,
 config :wally, Wally.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: System.get_env("DATABASE_URL"),
+  size: 10, # The amount of database connections in the pool
   extensions: [{Wally.Jsonb.Extension, library: Poison}]
