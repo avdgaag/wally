@@ -1,4 +1,4 @@
-defmodule Wally.ProjectsController do
+defmodule Wally.WallController do
   use Wally.Web, :controller
   alias Wally.Repo
   alias Wally.Project

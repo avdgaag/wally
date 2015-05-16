@@ -25,7 +25,7 @@ let ProjectStore = {
   },
 
   fetchProjects() {
-    return getJson('/api/projects').then(function(objs) {
+    return getJson('/api/wall').then(function(objs) {
       projects = objs;
       notifyObservers();
     });

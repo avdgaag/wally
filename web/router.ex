@@ -21,7 +21,7 @@ defmodule Wally.Router do
   scope "/api", Wally do
     pipe_through :api
 
-    get "/projects", ProjectsController, :index
+    get "/wall", WallController, :index
 
     post "/hooks/codeship", CodeshipController, :index
     post "/hooks/heroku", HerokuController, :index
