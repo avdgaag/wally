@@ -41,7 +41,7 @@ describe('Store', function() {
 
   it("can fetch projects from the API", function() {
     Store.fetchProjects();
-    expect(requests[0].url).to.eql("/api/projects");
+    expect(requests[0].url).to.eql("/api/wall");
     expect(requests[0].method).to.eql("GET");
     expect(requests[0].requestHeaders).to.eql({ "Content-Type": "application/json" });
   });
