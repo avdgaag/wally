@@ -7,5 +7,5 @@ export default function(cb) {
   channel.on('project:update', cb);
   channel.join().receive('ok', chan => {
     console.log('Subscribed to wall updates');
-  };
+  });
 }
