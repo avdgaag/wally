@@ -16,6 +16,14 @@ defmodule Wally.ProjectTest do
     refute changeset.valid?
   end
 
+  test "deletion cascades to badges" do
+    project = Repo.insert %Project{title: "My project"}
+    Repo.insert %Wally.Badge{project_id: project.id, label: "Label", value: "value"}
+    assert length(Repo.all(Wally.Badge)) == 1
+    Repo.delete project
+    assert length(Repo.all(Wally.Badge)) == 0
+  end
+
   test "fetches records by subset of settings" do
     Repo.insert %Project{title: "Project 1", settings: %{foo: "bar", baz: "qux"}}
     assert length(Repo.all(Project.by_settings(%{foo: "bar"}))) == 1
