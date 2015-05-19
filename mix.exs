@@ -49,7 +49,7 @@ defmodule Wally.Mixfile do
       "prod" ->
         System.cmd("npm", ["run", "compile"])
       _ ->
-        IO.puts "Skipping asset compilation"
+        # Nothing
     end
   end
 end
