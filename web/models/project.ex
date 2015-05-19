@@ -29,6 +29,14 @@ defmodule Wally.Project do
   end
 
   @doc """
+  Query for all records in chronological order of creation.
+  """
+  def chronologically do
+    from project in Wally.Project,
+      order_by: [project.inserted_at, project.id]
+  end
+
+  @doc """
   Query for all records whose settings match a given subset of settings. The
   comparison will be made as JSON.
 

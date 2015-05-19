@@ -24,6 +24,13 @@ defmodule Wally.ProjectTest do
     assert length(Repo.all(Wally.Badge)) == 0
   end
 
+  test "fetches records chronologically" do
+    project1 = Repo.insert %Project{title: "Project 1"}
+    project2 = Repo.insert %Project{title: "Project 2"}
+    results = Repo.all Project.chronologically
+    assert results == [project1, project2]
+  end
+
   test "fetches records by subset of settings" do
     Repo.insert %Project{title: "Project 1", settings: %{foo: "bar", baz: "qux"}}
     assert length(Repo.all(Project.by_settings(%{foo: "bar"}))) == 1
