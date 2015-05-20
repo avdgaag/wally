@@ -23,7 +23,7 @@ defmodule Wally.Project do
   If `params` are nil, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ nil) do
+  def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
   end
