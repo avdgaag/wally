@@ -1,0 +1,30 @@
+<h2>Listing projects</h2>
+
+<%= if length(@projects) > 0 do %>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+<%= for project <- @projects do %>
+      <tr>
+        <td><%= link project.title, to: project_path(@conn, :show, project) %></td>
+        <td class="text-right">
+          <%= link "Edit", to: project_path(@conn, :edit, project), class: "btn btn-default btn-xs" %>
+          <%= link "Delete", to: project_path(@conn, :delete, project), method: :delete, class: "btn btn-danger btn-xs" %>
+        </td>
+      </tr>
+<% end %>
+    </tbody>
+  </table>
+
+  <%= link "New project", to: project_path(@conn, :new), class: "btn btn-primary" %>
+<% else %>
+  <p>
+    There are no projects yet.
+    <%= link "Add a project", to: project_path(@conn, :new)  %>?
+  </p>
+<% end %>

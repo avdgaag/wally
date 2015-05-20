@@ -1,0 +1,34 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if f.errors != [] do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below:</p>
+      <ul>
+        <%= for {attr, message} <- f.errors do %>
+          <li><%= humanize(attr) %> <%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <label>Title</label>
+    <%= text_input f, :title, class: "form-control" %>
+  </div>
+
+  <fieldset>
+    <legend>Settings</legend>
+    <div class="form-group">
+      <label>Heroku application</label>
+      <%= text_input f, :heroku_app, class: "form-control", value: @changeset.model.settings["heroku_app"] %>
+    </div>
+    <div class="form-group">
+      <label>Codeship project ID</label>
+      <%= text_input f, :codeship_id, class: "form-control", value: @changeset.model.settings["codeship_id"] %>
+    </div>
+  </fieldset>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+    <%= link "Back", to: @back, class: "btn btn-default" %>
+  </div>
+<% end %>

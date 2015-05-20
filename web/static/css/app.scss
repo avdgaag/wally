@@ -1,8 +1,44 @@
 body {
   background-color: #333;
   color: #999;
-  font: 36px/54px sans-serif;
   margin: 10px;
+  font: 16px/24px sans-serif;
+}
+table {
+  width: 100%;
+  margin: 24px 0;
+}
+th {
+  text-align: left;
+  text-transform: uppercase;
+  border-bottom: 1px solid #333;
+  padding: 5px;
+}
+td {
+  border-bottom: 1px solid #333;
+  padding: 5px;
+}
+td.text-right {
+  text-align: right;
+}
+form.link {
+  display: inline;
+}
+a {
+  color: #ccc;
+
+  &:visited {
+    color: #aaa;
+  }
+
+  &:hover,
+  &:focus {
+    color: #eee;
+  }
+
+  &:active {
+    color: #fff;
+  }
 }
 #page {
   background-color: #222;
@@ -13,6 +49,7 @@ body {
   padding: 20px 10px;
 }
 .project {
+  font: 36px/54px sans-serif;
   border-top: 1px solid #111;
   border-bottom: 1px solid #333;
   padding: 20px 10px;
@@ -116,4 +153,96 @@ body {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+textarea,
+input[type=text] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px;
+  font: 16px/24px sans-serif;
+  background-color: #555;
+  border: 1px solid #999;
+  border-radius: 3px;
+  color: #fff;
+}
+.form-group {
+  padding-left: 200px;
+  margin: 24px 0;
+
+  label {
+    float: left;
+    margin-left: -200px;
+    width: 180px;
+    padding: 5px 5px 5px 0;
+  }
+}
+
+.btn {
+  border-radius: 3px;
+  background-color: #444;
+  color: #999;
+  border: 0;
+  padding: 5px 10px;
+  font: 16px/24px sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:visited {
+    color: #999;
+  }
+
+  &:hover {
+    background-color: #555;
+    color: #aaa;
+  }
+}
+
+.btn-xs {
+  font-size: 12px;
+}
+
+.alert-danger {
+  color: #900;
+  background-color: #ffe1e1;
+  padding: 10px;
+  border: 2px solid #900;
+  margin: 24px 0;
+}
+
+.flash--info {
+  color: #090;
+  background-color: #e1ffe1;
+  padding: 10px;
+  border: 2px solid #090;
+  border-radius: 3px;
+  margin: 24px 0;
+}
+.flash--error {
+  color: #900;
+  background-color: #ffe1e1;
+  padding: 10px;
+  border: 2px solid #900;
+  margin: 24px 0;
+}
+
+dl {
+  padding-left: 200px;
+  overflow: hidden;
+}
+
+dt {
+  font-weight: bold;
+  float: left;
+  width: 180px;
+  margin-left: -200px;
+  clear: left;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+legend {
+  font-weight: bold;
 }

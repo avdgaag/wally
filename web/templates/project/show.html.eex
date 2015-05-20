@@ -1,0 +1,12 @@
+<h2>Project: <%= @project.title %></h2>
+
+<dl>
+<%= for {key, value} <- @project.settings do  %>
+  <dt><%= key %>:</dt>
+  <dd><%= value %></dd>
+<% end %>
+</dl>
+
+<%= link "Back", to: project_path(@conn, :index), class: "btn btn-default btn-xs" %>
+<%= link "Edit", to: project_path(@conn, :edit, @project), class: "btn btn-default btn-xs" %>
+<%= link "Delete", to: project_path(@conn, :delete, @project), method: :delete, class: "btn btn-danger btn-xs" %>
