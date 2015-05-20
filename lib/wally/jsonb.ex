@@ -11,9 +11,8 @@ defmodule Wally.Jsonb do
     Implements JSONB as an Ecto type to be used in models and schema definitions.
     """
 
-    def type, do: :jsonb
-
-    def cast(any), do: any
+    def type,        do: :jsonb
+    def cast(json),  do: {:ok, json}
     def load(value), do: {:ok, value}
     def dump(value), do: {:ok, value}
   end

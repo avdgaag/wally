@@ -34,9 +34,8 @@ defmodule Wally.Clerk do
   end
 
   defp projects_query(identifier) do
-    from project in Project,
-      preload: [:badges],
-      where: fragment("? @> ?::jsonb", project.settings, ^identifier)
+    from p in Project.by_settings(identifier),
+      preload: [:badges]
   end
 
   defp broadcast(badge) do

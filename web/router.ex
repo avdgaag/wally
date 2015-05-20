@@ -16,6 +16,7 @@ defmodule Wally.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    resources "/projects", ProjectController
   end
 
   scope "/api", Wally do
