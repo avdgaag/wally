@@ -10,7 +10,12 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
   <body>
-    <div id="page">
+  <%= for {type,msg} <- get_flash(@conn) do %>
+    <div class="flash flash--<%= type %>">
+      <%= msg %>
+    </div>
+  <% end %>
+   <div id="page">
       <%= @inner %>
     </div>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
