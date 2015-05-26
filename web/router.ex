@@ -17,6 +17,7 @@ defmodule Wally.Router do
 
     get "/", PageController, :index
     resources "/projects", ProjectController
+    resources "/api_tokens", ApiTokenController
   end
 
   scope "/api", Wally do
