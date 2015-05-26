@@ -1,0 +1,8 @@
+<h2>New API token</h2>
+
+<%=
+  render "form.html",
+    changeset: @changeset,
+    action: api_token_path(@conn, :create),
+    back: api_token_path(@conn, :index)
+%>

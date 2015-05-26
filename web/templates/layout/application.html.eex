@@ -10,12 +10,21 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
   <body>
-  <%= for {type,msg} <- get_flash(@conn) do %>
+<%= for {type,msg} <- get_flash(@conn) do %>
     <div class="flash flash--<%= type %>">
       <%= msg %>
     </div>
-  <% end %>
-   <div id="page">
+<% end %>
+<%= unless @hide_menu do %>
+    <nav class="menu-bar">
+      <ol>
+        <li><%= link "Projects", to: project_path(@conn, :index) %></li>
+        <li><%= link "API Tokens", to: api_token_path(@conn, :index) %></li>
+        <li><%= link "Wall", to: page_path(@conn, :index) %></li>
+      </ol>
+    </nav>
+<% end %>
+    <div id="page">
       <%= @inner %>
     </div>
   </body>

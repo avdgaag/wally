@@ -1,0 +1,31 @@
+<h2>Listing API tokens</h2>
+
+<%= if length(@api_tokens) > 0 do %>
+  <table>
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Token</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+<%= for api_token <- @api_tokens do %>
+      <tr>
+        <td><%= api_token.description %></td>
+        <td><%= api_token.token %></td>
+        <td class="text-right">
+          <%= link "Delete", to: api_token_path(@conn, :delete, api_token), method: :delete, class: "btn btn-danger btn-xs" %>
+        </td>
+      </tr>
+<% end %>
+    </tbody>
+  </table>
+
+  <%= link "New API token", to: api_token_path(@conn, :new), class: "btn btn-primary" %>
+<% else %>
+  <p>
+    There are no API tokens yet.
+    <%= link "Add an API token", to: api_token_path(@conn, :new) %>
+  </p>
+<% end %>
