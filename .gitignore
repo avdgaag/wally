@@ -19,3 +19,4 @@ npm-debug*
 /priv/static/js
 .projections.json
 doc
+bin/dev
