@@ -10,5 +10,7 @@ install:
   - mix local.hex --force
   - mix deps.get
   - npm install
+before_script:
+  - phantomjs --wd &
 script:
   - bin/test
