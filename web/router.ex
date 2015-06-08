@@ -15,6 +15,7 @@ defmodule Wally.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :require_api_token
   end
 
   scope "/", Wally do
@@ -27,7 +28,14 @@ defmodule Wally.Router do
     resources "/api_tokens", ApiTokenController
   end
 
-  scope "/api", Wally do
+  scope "/", Wally do
+    pipe_through :browser
+    get "/login", SessionController, :new
+    post "/login", SessionController, :create
+    get "/logout", SessionController, :delete
+  end
+
+  scope "/api/:api_token", Wally do
     pipe_through :api
 
     post "/hooks/codeship", CodeshipController, :index
