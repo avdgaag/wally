@@ -10,7 +10,16 @@ defmodule Wally.ApiTokensTest do
     end
   end
 
+  defp login_with(username, password) do
+    Wally.Repo.insert(Wally.User.changeset(%Wally.User{}, %{"email" => username, "password" => password}))
+    navigate_to "/login"
+    fill_field({:id, "user_email"}, username)
+    fill_field({:id, "user_password"}, password)
+    click({:class, "btn-primary"})
+  end
+
   test "can create a new token" do
+    login_with("example@example.com", "secret")
     navigate_to "/api_tokens"
     click({:link_text, "Add an API token"})
     fill_field({:id, "api_token_description"}, "Example token")
@@ -20,6 +29,7 @@ defmodule Wally.ApiTokensTest do
   end
 
   test "can revoke a token" do
+    login_with("example@example.com", "secret")
     Wally.Repo.insert %Wally.ApiToken{description: "To be revoked"}
     navigate_to "/api_tokens"
     assert length(find_all_elements(:class, "api-token")) == 1
