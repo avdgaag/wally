@@ -20,7 +20,19 @@ defmodule Wally.Mixfile do
   # Type `mix help compile.app` for more information
   def application do
     [mod: {Wally, []},
-     applications: [:phoenix, :cowboy, :logger, :ecto]]
+     applications: app_list(Mix.env)]
+  end
+
+  defp app_list do
+    [:phoenix, :cowboy, :logger, :ecto]
+  end
+
+  defp app_list(:test) do
+    [:hound | app_list]
+  end
+
+  defp app_list(_) do
+    app_list
   end
 
   defp aliases do
@@ -41,6 +53,7 @@ defmodule Wally.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:phoenix_live_reload, "~> 0.4", only: :dev},
      {:cowboy, "~> 1.0"},
+     {:hound, "~> 0.7", only: :test},
      {:ex_doc, "~> 0.7", only: :dev}]
   end
 

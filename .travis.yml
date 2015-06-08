@@ -1,5 +1,7 @@
 ---
 language: elixir
+elixir:
+  - 1.0.4
 addons:
   postgresql: "9.4"
 otp_release:
@@ -8,5 +10,7 @@ install:
   - mix local.hex --force
   - mix deps.get
   - npm install
+before_script:
+  - phantomjs --wd &
 script:
   - bin/test

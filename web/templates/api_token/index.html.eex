@@ -11,7 +11,7 @@
     </thead>
     <tbody>
 <%= for api_token <- @api_tokens do %>
-      <tr>
+      <tr class="api-token">
         <td><%= api_token.description %></td>
         <td><%= api_token.token %></td>
         <td class="text-right">
