@@ -19,16 +19,16 @@ defmodule Wally.Router do
 
   scope "/", Wally do
     pipe_through :browser # Use the default browser stack
+    pipe_through :authenticated
 
     get "/", PageController, :index
+    get "/wall", WallController, :index
     resources "/projects", ProjectController
     resources "/api_tokens", ApiTokenController
   end
 
   scope "/api", Wally do
     pipe_through :api
-
-    get "/wall", WallController, :index
 
     post "/hooks/codeship", CodeshipController, :index
     post "/hooks/heroku", HerokuController, :index
