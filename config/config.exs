@@ -14,6 +14,9 @@ config :wally, Wally.Endpoint,
   pubsub: [name: Wally.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+config :phoenix, Wally.Router,
+  session: [store: :cookie, key: "_wally_secret_key"]
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

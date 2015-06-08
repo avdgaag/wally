@@ -1,11 +1,16 @@
 defmodule Wally.Router do
   use Phoenix.Router
+  import Wally.AuthenticationPlug
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
     plug :protect_from_forgery
+  end
+
+  pipeline :authenticated do
+    plug :require_login
   end
 
   pipeline :api do
