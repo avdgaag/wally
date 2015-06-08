@@ -24,7 +24,7 @@ defmodule Wally.Mixfile do
   end
 
   defp app_list do
-    [:phoenix, :cowboy, :logger, :ecto]
+    [:phoenix, :cowboy, :logger, :ecto, :comeonin]
   end
 
   defp app_list(:test) do
@@ -54,6 +54,7 @@ defmodule Wally.Mixfile do
      {:phoenix_live_reload, "~> 0.4", only: :dev},
      {:cowboy, "~> 1.0"},
      {:hound, "~> 0.7", only: :test},
+     {:comeonin, "~> 1.0"},
      {:ex_doc, "~> 0.7", only: :dev}]
   end
 

@@ -6,7 +6,9 @@ defmodule Wally.ApiTokenControllerTest do
   @invalid_params api_token: %{description: ""}
 
   setup do
+    Wally.Repo.insert(Wally.User.changeset(%Wally.User{}, %{"email" => "email", "password" => "password"}))
     conn = conn()
+    conn = post(conn, session_path(conn, :create, user: %{email: "email", password: "password"}))
     {:ok, conn: conn}
   end
 

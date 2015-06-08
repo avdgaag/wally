@@ -41,4 +41,12 @@ defmodule Wally.ApiToken do
       [_] -> generate_new_unique_token
     end
   end
+
+  def find_by_token(token) when is_binary(token) do
+    Wally.Repo.get_by(Wally.ApiToken, token: token)
+  end
+
+  def find_by_token(token) when is_nil(token) do
+    nil
+  end
 end

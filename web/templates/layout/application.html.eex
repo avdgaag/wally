@@ -21,6 +21,7 @@
         <li><%= link "Projects", to: project_path(@conn, :index) %></li>
         <li><%= link "API Tokens", to: api_token_path(@conn, :index) %></li>
         <li><%= link "Wall", to: page_path(@conn, :index) %></li>
+        <li><%= link "Log out", to: session_path(@conn, :delete) %></li>
       </ol>
     </nav>
 <% end %>

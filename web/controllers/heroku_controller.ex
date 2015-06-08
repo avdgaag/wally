@@ -4,9 +4,9 @@ defmodule Wally.HerokuController do
 
   plug :action
 
-  def index(conn, %{ "app" => app_name } = _params) do
+  def index(conn, %{"app" => app_name} = _params) do
     Clerk.update(
-      %{ heroku_app: app_name },
+      %{heroku_app: app_name},
       format_date_time(:calendar.universal_time()),
       "Deployment"
     )

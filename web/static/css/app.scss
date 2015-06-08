@@ -155,6 +155,8 @@ a {
   }
 }
 textarea,
+input[type=password],
+input[type=email],
 input[type=text] {
   width: 100%;
   box-sizing: border-box;
