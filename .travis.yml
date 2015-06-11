@@ -6,11 +6,16 @@ addons:
   postgresql: "9.4"
 otp_release:
   - 17.4
+before_install:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
 install:
+  - "wget http://selenium-release.storage.googleapis.com/2.45/selenium-server-standalone-2.45.0.jar"
   - mix local.hex --force
   - mix deps.get
   - npm install
 before_script:
-  - phantomjs --wd &
+  - "java -jar selenium-server-standalone-2.45.0.jar > /dev/null &"
+  - sleep 15
 script:
   - bin/test
