@@ -6,7 +6,8 @@ config :wally, Wally.Endpoint,
   http: [port: 4001],
   server: true
 
-config :hound, driver: "phantomjs"
+# To test web sockets we cannot use phantomjs, so let's stick to Selenium + firefox.
+config :hound, driver: "selenium"
 
 # Print only warnings and errors during test
 config :logger, level: :warn
