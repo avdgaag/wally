@@ -15,7 +15,6 @@ install:
   - mix deps.get
   - npm install
 before_script:
-  - "java -jar selenium-server-standalone-2.45.0.jar > /dev/null &"
-  - sleep 15
+  - "java -jar selenium-server-standalone-2.45.0.jar > /dev/null 2> /dev/null &"
 script:
   - bin/test
