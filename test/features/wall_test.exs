@@ -7,6 +7,7 @@ defmodule Wally.WallTest do
     api_token = Wally.Repo.insert %Wally.ApiToken{description: "Heroku"}
     login_with "example@example.com", "secret"
     navigate_to "/"
+    :timer.sleep(1000) # sleep so page can render
     assert visible_text(find_element(:class, "project__title")) == "My Project"
     assert visible_text(find_element(:class, "badge")) == "0\nDEPLOYMENT"
 
