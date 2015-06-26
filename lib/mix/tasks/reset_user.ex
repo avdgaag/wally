@@ -2,11 +2,10 @@ defmodule Mix.Tasks.Wally.ResetUser do
   use Mix.Task
   import Mix.Ecto
 
-  @shortdoc "Register a new user"
+  @shortdoc "Reset a user's password"
 
   @moduledoc """
-    A task for registering a new user in the application, so he or she can
-    log in and the web app.
+    Reset a user's password in case they lost in, so they can log in again.
   """
 
   def run([email | _args]) do
