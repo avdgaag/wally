@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Wally</title>
+    <style type="text/css">
+      body {
+        background-color: #333;
+        color: #999;
+        margin: 10px;
+        font: 16px/24px sans-serif; }
+
+      table {
+        width: 100%;
+        margin: 24px 0; }
+
+      th {
+        text-align: left;
+        text-transform: uppercase;
+        border-bottom: 1px solid #333;
+        padding: 5px; }
+
+      td {
+        border-bottom: 1px solid #333;
+        padding: 5px; }
+
+      td.text-right {
+        text-align: right; }
+
+      form.link {
+        display: inline; }
+
+      a {
+        color: #ccc; }
+        a:visited {
+          color: #aaa; }
+        a:hover, a:focus {
+          color: #eee; }
+        a:active {
+          color: #fff; }
+
+      #page {
+        background-color: #222;
+        border: 1px solid #111;
+        border-bottom-color: #444;
+        border-right-color: #444;
+        border-radius: 10px;
+        padding: 20px 10px; }
+
+      .project {
+        font: 36px/54px sans-serif;
+        border-top: 1px solid #111;
+        border-bottom: 1px solid #333;
+        padding: 20px 10px;
+        display: -webkit-flex; }
+
+      .project:first-child {
+        border-top: 0; }
+
+      .project:last-child {
+        border-bottom: 0; }
+
+      .project__title {
+        font-weight: bold;
+        color: #ddd;
+        padding: 10px 0;
+        -webkit-flex: 2;
+        white-space: nowrap;
+        margin-right: 20px;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); }
+
+      .badge {
+        -webkit-flex: 1 1 main-size;
+        background-color: #777;
+        text-align: center;
+        margin-right: 20px;
+        color: #111;
+        border-radius: 10px;
+        padding: 10px 20px; }
+
+      .badge:last-child {
+        margin-right: 0; }
+
+      .badge__value {
+        line-height: 36px;
+        font-weight: bold; }
+
+      .badge__label {
+        line-height: 18px;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px; }
+
+      .badge--green {
+        background-color: #0c0; }
+
+      .badge--red {
+        background-color: #c00; }
+
+      .badge--notice {
+        background-color: #cc0; }
+
+      .loader {
+        font-size: 10px;
+        margin: 0 auto;
+        text-indent: -9999em;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #000;
+        background: linear-gradient(to right, #000 10%, transparent 42%);
+        position: relative;
+        -webkit-animation: spinner 1.4s infinite linear; }
+
+      .loader:before {
+        width: 50%;
+        height: 50%;
+        background: #000;
+        border-radius: 100% 0 0 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: ''; }
+
+      .loader:after {
+        width: 75%;
+        height: 75%;
+        border-radius: 50%;
+        content: '';
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0; }
+
+      .badge--notice .loader:after {
+        background: #cc0; }
+
+      .badge--red .loader:after {
+        background: #c00; }
+
+      .badge--green .loader:after {
+        background: #0c0; }
+
+      @-webkit-keyframes spinner {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg); }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg); } }
+      textarea,
+      input[type=password],
+      input[type=email],
+      input[type=text] {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 5px;
+        font: 16px/24px sans-serif;
+        background-color: #555;
+        border: 1px solid #999;
+        border-radius: 3px;
+        color: #fff; }
+
+      .form-group {
+        padding-left: 200px;
+        margin: 24px 0; }
+        .form-group label {
+          float: left;
+          margin-left: -200px;
+          width: 180px;
+          padding: 5px 5px 5px 0; }
+
+      .btn {
+        border-radius: 3px;
+        background-color: #444;
+        color: #999;
+        border: 0;
+        padding: 5px 10px;
+        font: 16px/24px sans-serif;
+        cursor: pointer;
+        text-decoration: none; }
+        .btn:visited {
+          color: #999; }
+        .btn:hover {
+          background-color: #555;
+          color: #aaa; }
+
+      .btn-xs {
+        font-size: 12px; }
+
+      .alert-danger {
+        color: #900;
+        background-color: #ffe1e1;
+        padding: 10px;
+        border: 2px solid #900;
+        margin: 24px 0; }
+
+      .flash--info {
+        color: #090;
+        background-color: #e1ffe1;
+        padding: 10px;
+        border: 2px solid #090;
+        border-radius: 3px;
+        margin: 24px 0; }
+
+      .flash--error {
+        color: #900;
+        background-color: #ffe1e1;
+        padding: 10px;
+        border: 2px solid #900;
+        margin: 24px 0; }
+
+      dl {
+        padding-left: 200px;
+        overflow: hidden; }
+
+      dt {
+        font-weight: bold;
+        float: left;
+        width: 180px;
+        margin-left: -200px;
+        clear: left; }
+
+      fieldset {
+        border: none;
+        padding: 0; }
+
+      legend {
+        font-weight: bold; }
+
+      .menu-bar ol {
+        list-style: none;
+        margin: 0;
+        padding: 0; }
+      .menu-bar li {
+        display: inline-block; }
+      .menu-bar a {
+        padding: 10px;
+        display: block; }
+    </style>
+  </head>
+  <body>
+    <div id="page">
+      <div class="projects">
+        <div class="project">
+          <div class="project__title">Example project 1</div>
+          <div class="badge">
+            <div class="badge__value">5 minutes</div>
+            <div class="badge__label">deployment</div>
+          </div>
+        </div>
+        <div class="project">
+          <div class="project__title">Another demo project</div>
+          <div class="badge">
+            <div class="badge__value">2 hours</div>
+            <div class="badge__label">deployment</div>
+          </div>
+          <div class="badge">
+            <div class="badge__value"><span class="checkmark">✗</span></div>
+            <div class="badge__label">CI status</div>
+          </div>
+        </div>
+        <div class="project">
+          <div class="project__title">Simple App</div>
+          <div class="badge">
+            <div class="badge__value">✓</div>
+            <div class="badge__label">CI status</div>
+          </div>
+          <div class="badge">
+            <div class="badge__value"><span>7 days</span></div>
+            <div class="badge__label">deployment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
