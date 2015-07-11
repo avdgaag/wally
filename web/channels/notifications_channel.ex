@@ -5,7 +5,11 @@ defmodule Wally.NotificationsChannel do
   Websockets channel to hand out notifications to connected clients.
   """
 
-  def join("notifications", _auth_msg, socket) do
-    {:ok, socket}
+  def join("notifications", %{"api_token" => api_token}, socket) do
+    if Wally.User.find_by_token(api_token) do
+      {:ok, socket}
+    else
+      {:error, %{reason: "unauthorized"}}
+    end
   end
 end

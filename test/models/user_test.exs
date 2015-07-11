@@ -54,4 +54,9 @@ defmodule Wally.UserTest do
     {:error, expected_user} = User.authenticate("incorrect", "some content")
     assert expected_user == nil
   end
+
+  test "automatically sets a random, unqiue API token" do
+    user = Repo.insert(User.changeset(%User{}, @valid_attrs))
+    refute user.api_token == nil
+  end
 end

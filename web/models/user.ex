@@ -5,6 +5,7 @@ defmodule Wally.User do
     field :email, :string
     field :password, :string, virtual: true
     field :password_hash, :string
+    field :api_token, :string
 
     timestamps
   end
@@ -59,5 +60,29 @@ defmodule Wally.User do
       _ ->
         {:error, user}
     end
+  end
+
+  before_insert :set_token
+  defp set_token(changeset) do
+    changeset |> change(api_token: generate_new_unique_token)
+  end
+
+  defp generate_new_unique_token do
+    token = Wally.SecureRandom.urlsafe_base64
+    query = from r in Wally.User,
+            where: r.api_token == ^token,
+            limit: 1
+    case Wally.Repo.all(query) do
+      [] -> token
+      [_] -> generate_new_unique_token
+    end
+  end
+
+  def find_by_token(token) when is_binary(token) do
+    Wally.Repo.get_by(Wally.User, api_token: token)
+  end
+
+  def find_by_token(token) when is_nil(token) do
+    nil
   end
 end

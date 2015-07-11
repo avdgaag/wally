@@ -1,1 +1,4 @@
+<script type="text/javascript">
+window.API_TOKEN = "<%= @api_token %>";
+</script>
 <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
