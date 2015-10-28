@@ -1,0 +1,17 @@
+.action {
+    color: #fff;
+    margin: 20px auto;
+    width: 50%;
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 40px;
+    font-weight: bold;
+}
+
+.action--green {
+    background-color: $color-green;
+}
+
+.action--purple {
+    background-color: $color-purple;
+}

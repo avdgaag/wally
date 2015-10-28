@@ -1,0 +1,14 @@
+---
+language: elixir
+elixir:
+  - 1.1.1
+services:
+  - redis-server
+otp_release:
+  - 18.0
+install:
+  - mix local.hex --force
+  - mix deps.get
+  - npm install
+script:
+  - bin/test

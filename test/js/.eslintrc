@@ -1,0 +1,8 @@
+{
+  "globals": {
+    "React": true
+  },
+  "rules": {
+    "no-console": 0
+  }
+}

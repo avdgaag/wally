@@ -1,0 +1,26 @@
+{
+    "addons": ["heroku-redis:hobby-dev"],
+    "buildpacks": [
+        { "url": "https://github.com/gjaldon/heroku-buildpack-phoenix-static.git" },
+        { "url": "https://github.com/HashNuke/heroku-buildpack-elixir.git" }
+    ],
+    "env": {
+        "MIX_ENV": "prod",
+        "SECRET_KEY_BASE": {
+            "description": "A secret key for verifying the integrity of signed cookies.",
+            "generator": "secret"
+        },
+        "OAUTH_CLIENT_ID": {
+            "description": "Google Apps OAUTH client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "Google Apps OAUTH client secret"
+        },
+        "OAUTH_REDIRECT_URI": {
+            "description": "Google Apps OAUTH client redirect URI (like domain.tld/auth/google/callback)"
+        },
+        "OAUTH_DOMAIN": {
+            "description": "Google Apps OAUTH domain limit"
+        }
+    }
+}

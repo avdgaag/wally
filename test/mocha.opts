@@ -1,0 +1,9 @@
+--require test/js/setup
+--require chai
+--reporter spec
+--ui bdd
+--compilers jsx:babel/register
+--compilers js:babel/register
+--check-leaks
+--recursive
+test/js

@@ -1,0 +1,23 @@
+{
+  "extends": "eslint-config-airbnb",
+    "env": {
+      "browser": true,
+      "mocha": true
+    },
+    "rules": {
+      "valid-jsdoc": 2,
+      "react/jsx-uses-react": 2,
+      "react/jsx-quotes": 0,
+      "new-cap": 0,
+      "space-after-keywords": 0,
+      "react/jsx-uses-vars": 2,
+      "react/react-in-jsx-scope": 2,
+      "react/prop-types": 0,
+      "comma-dangle": [2, "never"],
+      "block-scoped-var": 0,
+      "func-names": 0
+    },
+    "plugins": [
+      "react"
+    ]
+}

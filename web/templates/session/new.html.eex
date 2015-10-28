@@ -1,0 +1,8 @@
+<div class="login-form">
+  <p>Sign in using your Google Apps account by using the button below.</p>
+  <%= link to: auth_path(@conn, :index, "google") do %>
+    <i class="octicon octicon-sign-in"></i>
+    Sign in with Google
+  <% end %>
+  <p><strong>Note:</strong> access is restricted to Google accounts on the <code><%= Application.get_env(:wally, :oauth)[:domain] %></code> domain.</p>
+</div>

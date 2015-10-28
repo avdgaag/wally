@@ -1,0 +1,62 @@
+$octicons-font-path: '/fonts';
+$color-green: #35c547;
+$color-red: #db4e54;
+$color-purple: #6337b0;
+$color-gray: #cccccc;
+
+@import 'octicons';
+@import 'button';
+@import 'action';
+@import 'project';
+@import 'badge';
+@import 'event';
+@import 'flash';
+@import 'login_form';
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font: 14px/20px sans-serif;
+    margin: 0;
+}
+
+.placeholder {
+    margin: 0 auto;
+    color: #999;
+    font-size: 20px;
+    line-height: 40px;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.projects-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    -webkit-flex: 1;
+}
+
+#container {
+    height: 100%;
+}
+
+.wally {
+    height: 100%;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    -webkit-justify-content: space-between;
+}
+
+.events {
+    -webkit-flex: 1;
+    max-height: 300px;
+    border-top: 10px solid #242426;
+    color: #999;
+    display: -webkit-flex;
+    background: -moz-linear-gradient(top, #363636 0%, #242426 100%); /* FF3.6+ */
+    background: -webkit-linear-gradient(top, #363636 0%, #242426 100%); /* Chrome10+,Safari5.1+ */
+    background: -ms-linear-gradient(top, #363636 0%, #242426 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #363636 0%, #242426 100%); /* W3C */
+}

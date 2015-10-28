@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# Use Foreman to launch all the things for the development environment.
+
+foreman start --env=.env --procfile=Procfile

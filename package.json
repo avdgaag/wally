@@ -1,0 +1,56 @@
+{
+  "name": "wally",
+  "private": true,
+  "engines": {
+    "node": "0.12.4"
+  },
+  "config": {
+    "webpack_config": "config/webpack.js",
+    "scss_input": "web/static/css/app.scss",
+    "scss_output": "priv/static/css",
+    "mocha_watch_reporter": "min",
+    "lint_files": "web/static/js test/js"
+  },
+  "scripts": {
+    "compile:css": "node-sass --source-map true --output $npm_package_config_scss_output $npm_package_config_scss_input",
+    "compile:css:watch": "node-sass --watch --recursive --source-map true --output $npm_package_config_scss_output $npm_package_config_scss_input",
+    "compile:js": "webpack --config $npm_package_config_webpack_config",
+    "compile:js:watch": "webpack --config $npm_package_config_webpack_config --watch",
+    "test": "mocha",
+    "test:watch": "npm run test --  --watch --reporter $npm_package_config_mocha_watch_reporter",
+    "env": "env",
+    "compile": "npm run compile:css; npm run compile:js",
+    "compile:production": "npm run compile:css -- --output-style compressed; npm run compile:js -- -p",
+    "lint": "eslint $npm_package_config_lint_files",
+    "pretest": "npm run lint"
+  },
+  "repository": {},
+  "dependencies": {
+    "babel": "latest",
+    "babel-core": "latest",
+    "babel-loader": "latest",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "classnames": "latest",
+    "es6-promise": "latest",
+    "immutable": "latest",
+    "node-sass": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-redux": "latest",
+    "redux": "latest",
+    "redux-immutable": "latest",
+    "reselect": "latest",
+    "webpack": "latest"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.0",
+    "chai": "latest",
+    "eslint": "^1.2.1",
+    "eslint-config-airbnb": "0.0.8",
+    "eslint-plugin-react": "^3.3.0",
+    "mocha": "^2.2.4",
+    "sinon": "^1.14.1",
+    "sinon-chai": "^2.7.0"
+  }
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Wally</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+  </head>
+  <body>
+    <%= if @current_user do %>
+      <div class="session-links">
+        <%= link to: session_path(@conn, :destroy) do %>
+          <i class="octicon octicon-sign-out"></i>
+          Sign Out
+        <% end %>
+      </div>
+    <% end %>
+    <div id="container" role="main">
+      <%= if get_flash(@conn, :info) do %>
+      <div class="flash flash--info">
+        <%= get_flash(@conn, :info) %>
+      </div>
+      <% end %>
+      <%= if get_flash(@conn, :alert) do %>
+      <div class="flash flash--alert">
+        <%= get_flash(@conn, :alert) %>
+      </div>
+      <% end %>
+      <%= render @view_module, @view_template, assigns %>
+    </div>
+  </body>
+</html>

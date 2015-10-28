@@ -1,0 +1,16 @@
+.flash {
+    padding: 10px;
+    border-bottom: 1px solid #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .25);
+    text-align: center;
+}
+
+.flash--info {
+    color: #e1ffe1;
+    background-color: #090;
+}
+
+.flash--alert {
+    color: #ffe1e1;
+    background-color: #900;
+}
