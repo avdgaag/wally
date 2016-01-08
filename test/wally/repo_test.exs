@@ -56,9 +56,9 @@ defmodule Wally.RepoTest do
     Api.sadd("project_ids", ["id1", "id2"])
     Api.hmset("project:id1", ["name", "test1"])
     Api.hmset("project:id2", ["name", "test2"])
-    {:ok, [record1, record2]} = Repo.all(Project)
-    assert record1 == %Project{name: "test1"}
-    assert record2 == %Project{name: "test2"}
+    {:ok, records} = Repo.all(Project)
+    assert Enum.member?(records, %Project{name: "test1"})
+    assert Enum.member?(records, %Project{name: "test2"})
   end
 
   test "fails when one of multiple records was not found" do
