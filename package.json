@@ -2,7 +2,8 @@
   "name": "wally",
   "private": true,
   "engines": {
-    "node": "0.12.4"
+    "node": "5.4.0",
+    "npm": "3.5.3"
   },
   "config": {
     "webpack_config": "config/webpack.js",

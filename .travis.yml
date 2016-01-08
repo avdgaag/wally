@@ -1,11 +1,14 @@
 ---
 language: elixir
 elixir:
-  - 1.1.1
+  - 1.2.0
 services:
   - redis-server
 otp_release:
   - 18.0
+before_install:
+  - nvm install 5.4.0
+  - npm install -g npm
 install:
   - mix local.hex --force
   - mix deps.get
