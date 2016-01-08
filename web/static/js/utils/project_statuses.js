@@ -1,8 +1,9 @@
 import lodash from 'lodash';
+const ci = 'continuous-integration/codeship';
 
 const addMasterBuildStatus = project => {
   let mbs = project.get('events').
-        filter(event => event.get('type') === 'ci').
+        filter(event => event.get('type') === ci).
         filter(event => event.get('subject') === 'master').
         maxBy(event => event.get('date'));
   if(mbs) {
@@ -13,7 +14,7 @@ const addMasterBuildStatus = project => {
 
 const addLastBuildStatus = project => {
   let lbs = project.get('events').
-        filter(event => event.get('type') === 'ci').
+        filter(event => event.get('type') === ci).
         filter(event => event.get('subject') !== 'master').
         maxBy(event => event.get('date'));
   if(lbs) {
