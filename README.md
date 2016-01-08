@@ -1,4 +1,4 @@
-# Wally
+# Wally [![Build Status](https://travis-ci.org/avdgaag/wally.svg?branch=rewrite)](https://travis-ci.org/avdgaag/wally)
 
 A toy software status wall application built with [Elixir][], [Phoenix][] and
 [React][]. Use it to display your CI build status and latest project activity on
@@ -14,7 +14,8 @@ This project requires both a working installation of [Elixir][] and [Node.js][]
 To start your new Phoenix application:
 
 1. Install dependencies with `mix deps.get` and then `npm install`.
-2. Start Phoenix endpoint with `mix phoenix.server`
+2. Start your Redis database with `redis-server`.
+2. Start Phoenix endpoint with `mix phoenix.server`.
 
 Now you can visit `localhost:4000` from your browser.
 
@@ -24,6 +25,7 @@ You can run this project's tests in two parts:
 
 * Test Elixir back-end code with `mix test`.
 * Test Javascript front-end code with `npm test`.
+* As a shortcut, test both using `bin/test`.
 
 Do make sure you have Redis running the background.
 
@@ -36,7 +38,8 @@ websockets, the client is updated immediately.
 Currently the only implemented web hooks are:
 
 * a Heroku deployment notification;
-* a Codeship build status notification.
+* a Codeship build status notification;
+* a Github commit status API notification.
 
 ## Deploy to Heroku
 
