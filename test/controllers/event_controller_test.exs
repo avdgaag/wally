@@ -32,6 +32,12 @@ defmodule Wally.EventControllerTest do
     Phoenix.PubSub.unsubscribe(Wally.PubSub, self(), "actions")
   end
 
+  test "renders 200 ignored page when receiving Github ping" do
+    params = %{"zen" => "wisdom", "hook_id" => "1", "hook" => "foo"}
+    conn = post conn(), "api/hooks/foobar/github", params
+    assert text_response(conn, 200) == "Initial ping to confirm installation"
+  end
+
   test "renders 404 when params are invalid" do
     conn = post conn(), "api/hooks/foobar/heroku", %{}
     assert text_response(conn, 403) == "Invalid inputs"
