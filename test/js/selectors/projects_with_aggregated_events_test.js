@@ -5,14 +5,13 @@ describe('projectsWithaggregatedEvents', () => {
 
   beforeEach(() => {
     const date = new Date();
-    const ci = 'continuous-integration/codeship';
     const inputState = Immutable.fromJS({
       projects: {
         1: { id: 1, title: 'Project', eventIds: ['1', '2', '3'] }
       },
       events: {
-        1: { id: 1, type: ci, status: 'success', subject: 'master', date: date },
-        2: { id: 2, type: ci, status: 'failed', subject: 'feature', date: date + 10 },
+        1: { id: 1, type: 'ci', status: 'success', subject: 'master', date: date },
+        2: { id: 2, type: 'ci', status: 'failed', subject: 'feature', date: date + 10 },
         3: { id: 2, type: 'exception' }
       }
     });

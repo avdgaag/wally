@@ -8,8 +8,8 @@ defmodule Wally.Event do
 
   defstruct id: nil, type: nil, status: nil, date: nil, description: nil, subject: nil
 
-  def github_status(%{"branches" => [%{"name" => branch}|_], "state" => state, "context" => context, "description" => description, "created_at" => date}) do
-    {:ok, %Wally.Event{subject: branch, type: context, status: state, description: description, date: date}}
+  def github_status(%{"branches" => [%{"name" => branch}|_], "state" => state, "context" => "continuous-integration" <> _, "description" => description, "created_at" => date}) do
+    {:ok, %Wally.Event{subject: branch, type: "ci", status: state, description: description, date: date}}
   end
 
   def github_status(%{"zen" => _, "hook_id" => _, "hook" => _}) do
