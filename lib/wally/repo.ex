@@ -152,16 +152,21 @@ defmodule Wally.Repo do
     end
   end
 
-  defp transaction(fun, expected_results) do
+  defp transaction(fun, expected_results, attempt \\ 1) do
     Api.multi
     result = fun.()
     case Api.exec do
       ^expected_results -> result
       other ->
-        IO.puts "Retrying failed transaction because of queue expectation mismatch:"
-        IO.inspect(expected_results)
-        IO.inspect(other)
-        transaction(fun, expected_results)
+        if attempt <= 5 do
+          IO.puts "Retrying failed transaction because of queue expectation mismatch (#{attempt}/5):"
+          IO.inspect(expected_results)
+          IO.inspect(other)
+          transaction(fun, expected_results, attempt + 1)
+        else
+          IO.puts "Aborting failed transaction after 5 attempts. Expected results did not match actual results."
+          {:error, "Transaction failed"}
+        end
     end
   end
 
