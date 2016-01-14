@@ -25,8 +25,14 @@ export default class Event extends Component {
   render() {
     const event = this.props.event;
     const date = new Date(Date.parse(event.get('date')));
+    const iconClasses = classNames({
+      'mega-octicon': true,
+      'octicon-bell': event.get('type') === 'ci',
+      'octicon-squirrel': event.get('type') === 'deployment'
+    });
     return (
       <div className="event">
+        <div className="event__icon"><span className={iconClasses}/></div>
         <div className="event__title">{event.get('type')}</div>
         <h3 className="event__subject">{event.get('project').get('name')}</h3>
         <p className="event__description">{event.get('description')}</p>
