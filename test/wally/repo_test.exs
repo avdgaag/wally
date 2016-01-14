@@ -111,6 +111,18 @@ defmodule Wally.RepoTest do
     assert record_reloaded.name == "test 2"
   end
 
+  test "updates any existing indices if they have changed" do
+    {:ok, record_before_update} = Repo.persist(%Project{name: "test", api_key: "foobar"}, [:name, :api_key])
+    assert 1 == Api.hexists("project:by_name", "test")
+    assert 1 == Api.hexists("project:by_api_key", "foobar")
+    updated_record = %Project{record_before_update | name: "test 2", api_key: "bazqux"}
+    {:ok, _record_after_update} = Repo.persist(updated_record, [:name, :api_key])
+    assert 0 == Api.hexists("project:by_name", "test")
+    assert 0 == Api.hexists("project:by_api_key", "foobar")
+    assert 1 == Api.hexists("project:by_name", "test 2")
+    assert 1 == Api.hexists("project:by_api_key", "bazqux")
+  end
+
   test "does not change existing ID for record" do
     {:ok, record_before_update} = Repo.persist(%Project{name: "test"})
     updated_record = %Project{record_before_update | name: "test 2"}
