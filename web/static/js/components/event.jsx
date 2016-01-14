@@ -8,7 +8,7 @@ class Action extends Component {
     const actionClasses = classNames({
       'action': true,
       'action--green': this.props.status === 'success',
-      'action--red': this.props.status === 'failure',
+      'action--red': this.props.status === 'error',
       'action--purple': this.props.status === 'deployed'
     });
     return (
