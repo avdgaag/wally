@@ -10,7 +10,7 @@ defmodule Mix.Tasks.Wally.ResetToken do
 
   def run([api_token | _args]) do
     with {:ok, project} <- Wally.Repo.get_by(Wally.Project, :api_token, api_token),
-         project = %{project | api_token: random_token(32)},
+         project = %{project | api_token: Wally.SecureToken.generate},
          {:ok, project} <- Wally.Repo.persist(project, [:api_token]),
          do: Mix.shell.info """
       Reset project #{project.name} API token to #{project.api_token}.
@@ -25,11 +25,5 @@ defmodule Mix.Tasks.Wally.ResetToken do
 
   def run([]) do
     Mix.shell.error "No project name provided. Usage: mix wally.reset_token API_TOKEN"
-  end
-
-  defp random_token(length) do
-    :crypto.strong_rand_bytes(length)
-    |> Base.url_encode64
-    |> binary_part(0, length)
   end
 end
