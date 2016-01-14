@@ -9,9 +9,7 @@ defmodule Mix.Tasks.Wally.CreateProject do
   """
 
   def run([name | _args]) do
-    {:ok, project } =
-      %Wally.Project{name: name, api_token: random_token(32)}
-      |> Wally.Repo.persist([:api_token])
+    {:ok, project } = Wally.Project.new(name) |> Wally.Repo.persist([:api_token])
     Mix.shell.info """
     Created project #{project.name} with API token #{project.api_token}.
 
@@ -25,11 +23,5 @@ defmodule Mix.Tasks.Wally.CreateProject do
 
   def run([]) do
     Mix.shell.error "No project name provided. Usage: mix wally.create_project my_project"
-  end
-
-  defp random_token(length) do
-    :crypto.strong_rand_bytes(length)
-    |> Base.url_encode64
-    |> binary_part(0, length)
   end
 end

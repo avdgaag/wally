@@ -125,7 +125,13 @@ defmodule Wally.Repo do
   def persist(%{__struct__: mod} = struct, index_by) when is_atom(mod) and is_list(index_by) do
     Api.watch(sequence_key(mod))
     struct_with_id = Map.put(struct, :id, next_id(sequence_key(mod)))
-    expected_results = Enum.reduce(index_by, [struct_with_id.id, "1", "OK"], fn _key, acc -> List.insert_at(acc, -2, "OK") end)
+    expected_results = Enum.concat([
+      [struct_with_id.id, "1"], # incrementing the ID sequence
+      Enum.map(index_by, fn _key -> :undefined end), # getting old index values
+      Enum.map(index_by, fn _key -> "0" end), # Deleting old index values
+      Enum.map(index_by, fn _key -> "OK" end), # Writing new index values
+      ["OK"]          # storing the struct attributes
+    ])
     transaction(fn ->
       persist_and_increment_sequence(struct_with_id, index_by)
     end, expected_results)
@@ -152,16 +158,21 @@ defmodule Wally.Repo do
     end
   end
 
-  defp transaction(fun, expected_results) do
+  defp transaction(fun, expected_results, attempt \\ 1) do
     Api.multi
     result = fun.()
     case Api.exec do
       ^expected_results -> result
       other ->
-        IO.puts "Retrying failed transaction because of queue expectation mismatch:"
-        IO.inspect(expected_results)
-        IO.inspect(other)
-        transaction(fun, expected_results)
+        if attempt <= 5 do
+          IO.puts "Retrying failed transaction because of queue expectation mismatch (#{attempt}/5):"
+          IO.inspect(expected_results)
+          IO.inspect(other)
+          transaction(fun, expected_results, attempt + 1)
+        else
+          IO.puts "Aborting failed transaction after 5 attempts. Expected results did not match actual results."
+          {:error, "Transaction failed"}
+        end
     end
   end
 
@@ -218,16 +229,35 @@ defmodule Wally.Repo do
   end
 
   defp do_persist(%{id: id} = struct, index_by) when not is_nil(id) and is_list(index_by) do
+    remove_old_indices(struct, index_by)
+    update_attributes(struct)
+    set_new_indices(struct, index_by)
+    {:ok, struct}
+  end
+
+  defp update_attributes(struct) do
     attributes =
       for {key, value} <- Map.from_struct(struct),
         !is_nil(value),
         into: [],
         do: [key, value]
     Api.hmset(record_key(struct), List.flatten(attributes))
+  end
+
+  defp set_new_indices(%{id: id} = struct, index_by) when not is_nil(id) and is_list(index_by) do
     Enum.each(index_by, fn (key) ->
       Api.hmset(index_key(struct, key), [Map.get(struct, key), id])
     end)
-    {:ok, struct}
+  end
+
+  defp remove_old_indices(struct, index_by) when is_list(index_by) do
+    previously_indexed_values =
+      for key <- index_by,
+        into: %{},
+        do: {key, Api.hget(record_key(struct), key)}
+    Enum.each(previously_indexed_values, fn {key, value} ->
+      (Api.hdel(index_key(struct, key), value))
+    end)
   end
 
   defp do_get(mod, id) do
