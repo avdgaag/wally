@@ -4,7 +4,7 @@ A toy software status wall application built with [Elixir][], [Phoenix][] and
 [React][]. Use it to display your CI build status and latest project activity on
 a big screen in the office.
 
-**Quite a work in progress**.
+**Quite a work in progress**. Note that this project is absurdly over-engineered, but it is a much a playground as it is an application.
 
 ## Installation
 
